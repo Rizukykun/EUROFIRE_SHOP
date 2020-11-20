@@ -1,0 +1,39 @@
+﻿@model List<CategoriaViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--TEM QUE FAZER FILTROS NESSA PARTE-->
+
+<h1>Listagem de Produtos</h1>
+
+<br />
+<a href="/categoria/criar">Novo Registro</a>
+<br />
+<br />
+
+
+<table class="table table-responsive table-striped">
+    @foreach (var prod in Model)
+    {
+
+
+        <div class="col-md-8">
+
+            <div class="row">
+                <h3>Categoria: @prod.Nome</h3> <br />
+            </div>
+
+            <div class="col-md-4">
+
+                <a href="/Produto/Alterar/@prod.Id" class="btn btn-group btn-warning">Alterar</a> &nbsp;&nbsp;
+                <a href="javascript:confirmaExclusao(@prod.Id)" class="btn btn-group btn-danger">Apagar</a>
+
+            </div>
+        </div>
+
+    }
+
+</table>

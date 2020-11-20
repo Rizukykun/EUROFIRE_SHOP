@@ -1,0 +1,125 @@
+﻿@model ProdutoViewModel
+
+@{
+    ViewData["Title"] = "Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Cadastro de Produto</h1>
+
+<!--COLOCAR COMBOBOX DE MARCA E FORNECEDOR-->
+
+<form action="/Produto/Salvar" method="post" enctype="multipart/form-data">
+
+    @if (ViewBag.Operacao == "A")
+    {
+
+        <label for="Id" class="control-label">Produto Id</label>
+        <input asp-for="Id" value="@Model.Id" readonly class="form-control disabled" />
+        <span asp-validation-for="Id" class="text-danger"></span>
+
+    }
+
+
+    <div class="row">
+        <div class="col-md-3 text-center">
+            <br />
+
+            <label for="Nome" class="control-label">Nome</label>
+            <input asp-for="Nome" type="text" value="@Model.Nome" class="form-control" placeholder="Nome Produto" />
+            <span asp-validation-for="Nome" class="text-danger"></span>
+
+        </div>
+
+        <div class="col-md-3 text-center">
+            <br />
+
+            <label for="IdCategoria">Categoria</label>
+            <select asp-for="IdCategoria" asp-items="ViewBag.Categorias" class="form-control"> </select>
+
+        </div>
+
+        <div class="col-md-3 text-center">
+            <br />
+            <!--<input type='number' step='0.01' value='0.00' placeholder='0.00' />-->
+            <label for="Preco">Preco</label>
+            <input asp-for="Preco" type="number" value="@Model.Preco" class="form-control" placeholder="R$     ,  " />
+            <span asp-validation-for="Preco" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-3 text-center">
+            <br />
+
+            <label for="Estoque">Estoque</label>
+            <input asp-for="Estoque" type="number" value="@Model.Estoque" class="form-control" placeholder="Estoque Produto" />
+            <span asp-validation-for="Estoque" class="text-danger"></span>
+        </div>
+
+
+
+    </div>
+
+    <br />
+    <br />
+
+    <div class="row">
+
+        <div class="col-md-2 text-center">
+
+        </div>
+
+
+        <div class="col-md-5 text-center">
+
+            <br />
+
+            <img id="ImagePreview1" src="data:image/jpeg;base64,@Model.ImagemEm64_1" class="img-responsive" width="200">
+            <input type="file" name="Imagem1" id="Imagem1" onchange="exibirImagem('Imagem1', 'ImagePreview1')" class="btn btn-secondary">
+            <span asp-validation-for="Imagem1" class="text-danger"></span>
+
+        </div>
+
+
+        <div class="col-md-5 text-center">
+
+            <br />
+
+            <img id="ImagePreview2" src="data:image/jpeg;base64,@Model.ImagemEm64_2" class="img-responsive" width="200">
+            <input type="file" name="Imagem2" id="Imagem2" onchange="exibirImagem('Imagem2', 'ImagePreview2')" class="btn btn-secondary">
+            <span asp-validation-for="Imagem2" class="text-danger"></span>
+
+        </div>
+
+    </div>
+
+    <br />
+    <br />
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <br />
+
+            <!--<label for="Descricao">Descricao: </label>-->
+            <textarea cols=60 rows="10" name="Descricao" asp-for="Descricao" maxlength="500" wrap="hard" placeholder="Descrição do produto: "></textarea>
+        </div>
+    </div>
+
+    <br />
+    <br />
+
+    <input type="submit" value="Salvar dados" class="btn btn-success" />
+
+    &nbsp; &nbsp; &nbsp; &nbsp;
+    @if (ViewBag.Operacao == "A")
+    {
+
+        <a href="/Produto/Index" class="btn btn-secondary">Listagem</a>
+    }
+    &nbsp; &nbsp; &nbsp; &nbsp;
+    @if (ViewBag.Operacao == "A")
+    {
+
+        <a href="/Home/Index" class="btn btn-secondary">Home</a>
+    }
+
+</form>

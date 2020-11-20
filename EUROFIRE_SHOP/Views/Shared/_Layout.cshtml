@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - EUROFIRE SHOP</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" style="background-image: linear-gradient(to right, grey, white)">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--<a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Cadastro Fotos Viagem</a>-->
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">
+                        <img src="~/images/HomeIcon.png" />
+
+                    </a>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About" style="color: black; font-size: 15px">Sobre</a></li>
+
+                    @if (ViewBag.Logado == true)
+                    {
+                        @if (ViewBag.TipoUsuario == (int)EnumTipoUsuario.Administador)
+                        {
+                            <li><a asp-area="" asp-controller="Login" asp-action="Index" style="color: black; font-size: 15px">Cadastro de User</a></li><!--Colocar o "a" no botão-->
+                            <li><a asp-area="" asp-controller="Produto" asp-action="Criar" style="color: black; font-size: 15px">Produtos</a></li>
+                            <li><a asp-area="" asp-controller="Produto" asp-action="Index" style="color: black; font-size: 15px">Listar Produtos</a></li>
+                            <li><a asp-area="" asp-controller="Categoria" asp-action="Criar" style="color: black; font-size: 15px">Categorias</a></li>
+                            <li><a asp-area="" asp-controller="Categoria" asp-action="Index" style="color: black; font-size: 15px">Listar Categorias</a></li>
+                        }
+
+                        <li><a asp-area="" asp-controller="Login" asp-action="LogOff" style="color: black; font-size: 15px">Sair</a></li>
+
+                    }
+                    else
+                    {
+                        <li><a asp-area="" asp-controller="Login" asp-action="Index" style="color: black; font-size: 15px">Login</a></li>
+                    }
+
+
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <partial name="_CookieConsentPartial" />
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; 2020 - CadastroFotosViagem</p>
+        </footer>
+    </div>
+
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

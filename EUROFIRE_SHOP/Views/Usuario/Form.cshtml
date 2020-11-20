@@ -1,0 +1,110 @@
+﻿@model UsuarioViewModel
+@{
+    ViewData["Title"] = "Cadastro de usuários";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cadastro</h2>
+
+@if (Model.Tipo == EnumTipoUsuario.Administador)
+{
+    <h3><center>Usuário Administrador</center></h3>
+}
+
+<!--MELHORAR O LAYOUT DA TELA, COM ROWS E TAMANHOS DE CADA CAMPO-->
+<form action="/Usuario/Salvar" method="post">
+    <input type="hidden" name="Operacao" value="@ViewBag.Operacao" />
+    <input type="hidden" asp-for="Tipo" />
+
+    <input asp-for="Id" type="hidden" class="form-control" />
+
+    <label for="Nome" class="control-label">Nome do Usuário</label>
+    <input asp-for="Nome" class="form-control" />
+    <span asp-validation-for="Nome" class="text-danger"></span>
+    <br />
+
+    <label for="Email" class="control-label">Login - E-mail</label>
+    <input asp-for="Email" type="email" class="form-control" />
+    <span asp-validation-for="Email" class="text-danger"></span>
+    <br />
+
+    <label for="Senha" class="control-label">Senha</label>
+    <input asp-for="Senha" type="password" class="form-control" />
+    <span asp-validation-for="Senha" class="text-danger"></span>
+    <br />
+
+    <label for="Cpf" class="control-label">Cpf</label>
+    <input asp-for="Cpf" type="text" class="form-control" />
+    <span asp-validation-for="Cpf" class="text-danger"></span>
+    <br />
+
+    <label for="Sexo" class="control-label">Sexo: </label>
+    <select asp-for="@Model.Sexo" asp-items="Html.GetEnumSelectList<EnumSexo>()" class="form-control"></select>
+    <span asp-validation-for="Sexo" class="text-danger"></span>
+    <br />
+
+    <!--VER VALIDAÇÃO DE FOTOS NO ARQUIVO DE FOTO-->
+    <label for="DataDeNascimento" class="control-label">Data de Compra</label>
+    <input asp-for="DataDeNascimento" type="date" value="@Model.DataDeNascimento.ToString("yyyy-MM-dd")" class="form-control" placeholder=" / / " />
+    <span asp-validation-for="DataDeNascimento" class="text-danger"></span>
+    <br />
+
+    <label for="Telefone" class="control-label">Telefone</label>
+    <input asp-for="Telefone" type="text" class="form-control" placeholder=" (00) 0 0000-0000 " />
+    <span asp-validation-for="Telefone" class="text-danger"></span>
+    <br />
+
+
+    <label for="Cep" class="control-label">Cep</label>
+    <input asp-for="Cep" type="text" class="form-control" name="cep" id="cep" onblur="buscaCEP()" />
+    <br>
+
+    <label class="control-label">Logradouro</label>
+    <input type="text" name="logradouro" id="logradouro" class="form-control" readonly />
+    <br>
+
+    <label for="Numero" class="control-label">Celular:</label>
+    <!--<input type="text" name="numero" id="numero" />-->
+    <input asp-for="Numero" type="number" class="form-control" name="numero" id="numero" />
+    <span asp-validation-for="Numero" class="text-danger"></span>
+    <br>
+
+    <label for="Complemento" class="control-label">Complemento</label>
+    <!--<input type="text" name="complemento" id="complemento" />-->
+    <input asp-for="Complemento" type="text" class="form-control" name="complemento" id="complemento" />
+    <span asp-validation-for="Complemento" class="text-danger"></span>
+    <br>
+
+
+    <label class="control-label">Bairro</label>
+    <input type="text" name="bairro" id="bairro" class="form-control" readonly />
+    <br>
+
+    <label class="control-label">Cidade</label>
+    <input type="text" name="localidade" id="localidade" class="form-control" readonly />
+    <br>
+
+    <label class="control-label">Estado</label>
+    <input type="text" name="uf" id="uf" class="form-control" readonly />
+    <br>
+
+
+
+
+    @if (ViewBag.TipoUsuario == "a")
+    {
+        <label for="Tipo" class="control-label">Tipo de usuário:</label>
+        <select asp-for="@Model.Tipo" asp-items="Html.GetEnumSelectList<EnumTipoUsuario>()" class="form-control"></select>
+        <br />
+    }
+
+
+    <input type="submit" value="Criar Usuário" class="btn btn-success" />
+    <a asp-controller="Login" asp-action="Index" class="btn btn-danger">Voltar</a>
+    <br />
+
+    <span class="text-danger">@ViewBag.Erro</span>
+</form>
+
+
+

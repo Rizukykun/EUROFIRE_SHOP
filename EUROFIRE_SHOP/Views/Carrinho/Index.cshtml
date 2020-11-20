@@ -1,0 +1,28 @@
+﻿@model List<ProdutoViewModel>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<center><h2>Bem vindo a EuroFire Shop</h2> </center>
+<br />
+<div class="quadradoImagem">
+    <img src="~/images/carrinho.png" />
+    @ViewBag.TotalCarrinho produtos existentes no carrinho.
+    <a href="/Carrinho/Visualizar">Visualizar</a>
+</div>
+<br />
+<br />
+
+<div class="quadradoImagem">
+    @foreach (var produtos in Model)
+    {
+
+        <a href="/Carrinho/Detalhes/?idCidade=@produtos.Id">
+            <figure class="quadradoImagem">
+                <img class="quadradoImagem" src="data:image/jpeg;base64,@produtos.ImagemEm64_1">
+                <figcaption>
+                    @produtos.Nome<br>
+                </figcaption>
+            </figure>
+        </a>
+    }
+</div>

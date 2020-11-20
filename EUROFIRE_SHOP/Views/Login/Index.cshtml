@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Login</h2>
+<div class="row">
+    <div class="col-lg-3">
+        <form action="/login/Fazlogin" method="post">
+            <label for="usuario" class="control-label">Usuário</label>
+            <input type="text" value="teste@teste.com" name="usuario" class="form-control" required placeholder='Usuário...' />
+            <label for="senha" class="control-label">Senha</label>
+            <input type="password" value="123456" name="senha" class="form-control" required placeholder='Senha...' />
+            <br />
+            <input type="submit" value="Login" class="btn btn-success" />
+            <a href="/Usuario/CriarUsuario?TipoUsuario=2" class="btn btn-default">Cadastrar Novo</a>
+            <br />
+            <span class="text-danger"> @ViewBag.Erro</span>
+        </form>
+    </div>
+</div>

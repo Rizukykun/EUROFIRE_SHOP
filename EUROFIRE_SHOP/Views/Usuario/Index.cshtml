@@ -1,0 +1,48 @@
+﻿
+@model List<UsuarioViewModel>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Usuários</h2>
+
+<div style="margin-bottom: 15px">
+    <a class="btn btn-default" asp-area="" asp-controller="Home" asp-action="Administrativo">
+        <span class="glyphicon glyphicon-chevron-left"></span>&nbsp;  Voltar
+    </a>
+</div>
+<!--REVER SE PRECISA COLOCAR AS OUTRAS INFORMAÇÕES DO USUÁRIO-->
+<table class="table table-responsive table-striped">
+    <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>E-mail</th>
+        <!--<th>Administrador</th>-->
+    </tr>
+
+    @foreach (var usuario in Model)
+    {
+        <tr>
+            <td>@usuario.Id</td>
+            <td>@usuario.Nome</td>
+            <td>@usuario.Email</td>
+            <td>
+                <!--<label class="switch">
+
+                                @if (usuario.Tipo == EnumTipoUsuario.Administador)//testar essa parte (só colocada, não alterada)
+                    {
+                        <input type="checkbox" id="chk_@usuario.Id" checked onclick="AlteraTipoUsuario(this,@usuario.Id)  " />
+                    }
+                    else
+                    {
+                        <input type="checkbox" id="chk_@usuario.Id" onclick="AlteraTipoUsuario(this,@usuario.Id)  " />
+                    }
+                    <span class="slider round"></span>
+                </label>-->
+        </td>
+    </tr>
+    }
+
+</table>
+
+
