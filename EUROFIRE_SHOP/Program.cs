@@ -12,6 +12,7 @@ namespace EUROFIRE_SHOP
 {
     public class Program
     {
+        //abc
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args).Build().Run();
