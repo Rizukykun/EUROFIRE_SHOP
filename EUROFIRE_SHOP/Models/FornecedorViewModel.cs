@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 namespace EUROFIRE_SHOP.Models
 {
-    public class FornecedorViewModel
+    public class FornecedorViewModel : PadraoViewModel
     {
+        public string Nome { get; set; }
     }
 }
