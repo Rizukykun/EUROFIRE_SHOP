@@ -1,5 +1,6 @@
 ﻿using EUROFIRE_SHOP.DAO;
 using EUROFIRE_SHOP.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
@@ -90,6 +91,9 @@ namespace EUROFIRE_SHOP.Controllers
                 }
                 else
                 {
+
+                    model.IdUsuarioLogado = HttpContext.Session.GetString("IdUsuarioLogado");
+                    
                     if (Operacao == "I")
                         DAO.Inserir(model);
                     else

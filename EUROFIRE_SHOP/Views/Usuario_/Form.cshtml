@@ -14,8 +14,7 @@
 <!--MELHORAR O LAYOUT DA TELA, COM ROWS E TAMANHOS DE CADA CAMPO-->
 <form action="/Usuario/Salvar" method="post">
     <input type="hidden" name="Operacao" value="@ViewBag.Operacao" />
-    <input type="hidden" asp-for="Tipo" value="@ViewBag.TipoUsuario" />
-
+    <input type="hidden" asp-for="Tipo" />
 
     <input asp-for="Id" type="hidden" class="form-control" />
 
@@ -45,8 +44,8 @@
     <br />
 
     <!--VER VALIDAÇÃO DE FOTOS NO ARQUIVO DE FOTO-->
-    <label for="DataDeNascimento" class="control-label">Data De Nascimento</label>
-    <input asp-for="DataDeNascimento" type="date" value="@Model.DataDeNascimento.ToString("yyyy-MM-dd")" class="form-control" placeholder="01/01/2050" />
+    <label for="DataDeNascimento" class="control-label">Data de Compra</label>
+    <input asp-for="DataDeNascimento" type="date" value="@Model.DataDeNascimento.ToString("yyyy-MM-dd")" class="form-control" placeholder=" / / " />
     <span asp-validation-for="DataDeNascimento" class="text-danger"></span>
     <br />
 
@@ -64,7 +63,7 @@
     <input type="text" name="logradouro" id="logradouro" class="form-control" readonly />
     <br>
 
-    <label for="Numero" class="control-label">Numero:</label>
+    <label for="Numero" class="control-label">Celular:</label>
     <!--<input type="text" name="numero" id="numero" />-->
     <input asp-for="Numero" type="number" class="form-control" name="numero" id="numero" />
     <span asp-validation-for="Numero" class="text-danger"></span>
@@ -92,7 +91,7 @@
 
 
 
-    @if (ViewBag.TipoUsuario == 1)
+    @if (ViewBag.TipoUsuario == "a")
     {
         <label for="Tipo" class="control-label">Tipo de usuário:</label>
         <select asp-for="@Model.Tipo" asp-items="Html.GetEnumSelectList<EnumTipoUsuario>()" class="form-control"></select>

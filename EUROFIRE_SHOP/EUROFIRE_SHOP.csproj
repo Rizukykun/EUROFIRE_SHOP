@@ -22,7 +22,7 @@
     <Content Update="Views\Produto\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\Usuario\Index.cshtml">
+    <Content Update="Views\Usuario_\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
   </ItemGroup>

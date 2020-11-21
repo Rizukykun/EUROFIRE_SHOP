@@ -1,5 +1,6 @@
 ﻿using EUROFIRE_SHOP.Enuns;
 using EUROFIRE_SHOP.Models;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,7 +14,8 @@ namespace EUROFIRE_SHOP.DAO
     {
         protected override SqlParameter[] CriaParametros(UsuarioViewModel model)
         {
-            SqlParameter[] parametros = new SqlParameter[12];
+
+            SqlParameter[] parametros = new SqlParameter[13];
             parametros[0] = new SqlParameter("Id", model.Id);
             parametros[1] = new SqlParameter("Nome", model.Nome);
             parametros[2] = new SqlParameter("Email", model.Email);
@@ -26,6 +28,7 @@ namespace EUROFIRE_SHOP.DAO
             parametros[9] = new SqlParameter("Cep", model.Cep);
             parametros[10] = new SqlParameter("Numero", model.Numero);
             parametros[11] = new SqlParameter("Complemento", model.Complemento);
+            parametros[12] = new SqlParameter("Usuario", model.IdUsuarioLogado);
 
             return parametros;
         }
