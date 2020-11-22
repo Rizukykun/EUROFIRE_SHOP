@@ -40,5 +40,8 @@ namespace EUROFIRE_SHOP.Models
                     return "";
             }
         }
+
+        public int IdFornecedor { get; set; }
+        public int IdMarca { get; set; }
     }
 }

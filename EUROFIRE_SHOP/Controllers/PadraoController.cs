@@ -1,4 +1,5 @@
 ﻿using EUROFIRE_SHOP.DAO;
+using EUROFIRE_SHOP.Enuns;
 using EUROFIRE_SHOP.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -92,7 +93,7 @@ namespace EUROFIRE_SHOP.Controllers
                 else
                 {
 
-                    model.IdUsuarioLogado = HttpContext.Session.GetString("IdUsuarioLogado");
+                    model.IdUsuarioLogado = Convert.ToInt32(HttpContext.Session.GetString("IdUsuario"));
                     
                     if (Operacao == "I")
                         DAO.Inserir(model);
@@ -120,7 +121,8 @@ namespace EUROFIRE_SHOP.Controllers
         {
             if (this.GetType().Name.ToUpper().Contains("USUARIOCONTROLLER"))
             {
-                //ViewBag.Logado = true;
+                ViewBag.Logado = true;
+                ViewBag.TipoUsuario = (EnumTipoUsuario)Convert.ToInt32(HttpContext.Session.GetString("TipoUsuario"));
                 base.OnActionExecuting(context);
             }
             else

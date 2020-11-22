@@ -11,6 +11,8 @@
 
 <form action="/Produto/Salvar" method="post" enctype="multipart/form-data">
 
+    <input type="hidden" asp-for="Tipo" value="@Convert.ToInt32(Model.Tipo)" />
+
     @if (ViewBag.Operacao == "A")
     {
 
@@ -58,6 +60,28 @@
 
 
     </div>
+
+
+    <div class="row">
+
+        <div class="col-md-6 text-center">
+            <br />
+
+            <label for="IdFornecedor">Fornecedor</label>
+            <select asp-for="IdFornecedor" asp-items="ViewBag.Fornecedor" class="form-control"> </select>
+
+        </div>
+
+        <div class="col-md-6 text-center">
+            <br />
+
+            <label for="IdMarca">Marca</label>
+            <select asp-for="IdMarca" asp-items="ViewBag.Marca" class="form-control"> </select>
+
+        </div>
+
+    </div>
+
 
     <br />
     <br />
@@ -121,5 +145,7 @@
 
         <a href="/Home/Index" class="btn btn-secondary">Home</a>
     }
+
+    <span class="text-danger">@ViewBag.Erro</span>
 
 </form>

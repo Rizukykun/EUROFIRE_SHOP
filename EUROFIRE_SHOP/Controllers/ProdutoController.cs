@@ -33,9 +33,9 @@ namespace EUROFIRE_SHOP.Controllers
         {
             if (string.IsNullOrEmpty(model.Nome))
                 ModelState.AddModelError("Nome", "O nome do produto é obrigatório!");
-            if (string.IsNullOrEmpty(model.Descricao))
-                ModelState.AddModelError("Descricao", "A descrição do produto é obrigatória!");
-            if (model.IdCategoria < 0)
+            //if (string.IsNullOrEmpty(model.Descricao))
+                //ModelState.AddModelError("Descricao", "A descrição do produto é obrigatória!");
+            if (model.IdCategoria <= 0)
                 ModelState.AddModelError("IdCategoria", "Categoria inexistente!");
             if (model.Estoque < 0)
                 ModelState.AddModelError("Estoque", "A quantidade em estoque é obrigatória!");
@@ -43,6 +43,12 @@ namespace EUROFIRE_SHOP.Controllers
                 ModelState.AddModelError("Preco", "O Preco é obrigatório!");
             if (model.Imagem1 == null && operacao == "I")
                 ModelState.AddModelError("Imagem1", "Escolha uma imagem!");
+            if (model.IdFornecedor <= 0)
+                ModelState.AddModelError("IdFornecedor", "Fornecedor inexistente!");
+            if (model.IdMarca <= 0)
+                ModelState.AddModelError("IdMarca", "Marca inexistente!");
+
+            ModelState.Remove("Descricao");
 
             //VALIDAR CETEGORIA, FORNECEDOR E MARCA
 
@@ -69,6 +75,8 @@ namespace EUROFIRE_SHOP.Controllers
         protected override void PreencheDadosParaView(string Operacao, ProdutoViewModel model)
         {
             PrepListaCategoriaParaCombo();
+            PrepListaFornecedorParaCombo();
+            PrepListaMarcaParaCombo();
         }
 
         private void PrepListaCategoriaParaCombo()
@@ -85,6 +93,33 @@ namespace EUROFIRE_SHOP.Controllers
             ViewBag.Categorias = listaCategorias;
         }
 
-        //FAZER UM PREPARA LISTA PARA FORNECEDOR E MARCA
+        private void PrepListaFornecedorParaCombo()
+        {
+            FornecedorDAO forn = new FornecedorDAO();
+            var fornecedores = forn.Listar();
+            List<SelectListItem> listaFornecedores = new List<SelectListItem>();
+            listaFornecedores.Add(new SelectListItem("Selecione um fornecedor...", "0"));
+            foreach (var forne in fornecedores)
+            {
+                SelectListItem item = new SelectListItem(forne.Nome, forne.Id.ToString());
+                listaFornecedores.Add(item);
+            }
+            ViewBag.Fornecedor = listaFornecedores;
+        }
+
+        private void PrepListaMarcaParaCombo()
+        {
+            MarcaDAO mar = new MarcaDAO();
+            var marcas = mar.Listar();
+            List<SelectListItem> listaMarcas = new List<SelectListItem>();
+            listaMarcas.Add(new SelectListItem("Selecione uma marca...", "0"));
+            foreach (var marc in marcas)
+            {
+                SelectListItem item = new SelectListItem(marc.Nome, marc.Id.ToString());
+                listaMarcas.Add(item);
+            }
+            ViewBag.Marca = listaMarcas;
+        }        
     }
 }
+

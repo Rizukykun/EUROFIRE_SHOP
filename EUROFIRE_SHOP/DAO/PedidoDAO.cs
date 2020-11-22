@@ -12,9 +12,10 @@ namespace EUROFIRE_SHOP.DAO
     {
         protected override SqlParameter[] CriaParametros(PedidoViewModel model)
         {
-            SqlParameter[] parametros = new SqlParameter[8];
+            SqlParameter[] parametros = new SqlParameter[3];
             parametros[0] = new SqlParameter("Id", model.Id);
             parametros[1] = new SqlParameter("data", model.Data);
+            parametros[2] = new SqlParameter("Usuario", model.IdUsuarioLogado);
 
             return parametros;
         }

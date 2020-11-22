@@ -20,7 +20,7 @@ namespace EUROFIRE_SHOP.DAO
             if (imgByte2 == null)
                 imgByte2 = new byte[0];
 
-            SqlParameter[] parametros = new SqlParameter[8];
+            SqlParameter[] parametros = new SqlParameter[11];
             parametros[0] = new SqlParameter("Id", model.Id);
             parametros[1] = new SqlParameter("Nome", model.Nome);
             parametros[2] = new SqlParameter("Descricao", model.Descricao);
@@ -29,6 +29,9 @@ namespace EUROFIRE_SHOP.DAO
             parametros[5] = new SqlParameter("Preco", model.Preco);
             parametros[6] = new SqlParameter("imagem1", imgByte1);
             parametros[7] = new SqlParameter("imagem2", imgByte2);
+            parametros[8] = new SqlParameter("IdFornecedor", model.IdFornecedor);
+            parametros[9] = new SqlParameter("IdMarca", model.IdMarca);
+            parametros[10] = new SqlParameter("Usuario", model.IdUsuarioLogado);
 
             return parametros;
         }
@@ -48,7 +51,7 @@ namespace EUROFIRE_SHOP.DAO
             if (registro.Table.Columns.Contains("imagem2"))
                 if (registro["imagem2"] != DBNull.Value)
                     n.ImagemEmByte2 = registro["imagem2"] as byte[];
-
+            n.IdFornecedor = Convert.ToInt32(registro["idFornecedor"]);
             return n;
         }
 
@@ -57,7 +60,7 @@ namespace EUROFIRE_SHOP.DAO
             Tabela = "Produto";
         }
 
-        public override List<ProdutoViewModel> Listar()
+        /*public override List<ProdutoViewModel> Listar()
         {
             var p = new SqlParameter[]
             {
@@ -71,6 +74,6 @@ namespace EUROFIRE_SHOP.DAO
                 lista.Add(MontaModel(registro));
             }
             return lista;
-        }
+        }*/
     }
 }

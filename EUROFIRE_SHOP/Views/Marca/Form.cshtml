@@ -11,6 +11,8 @@
 
 <form action="/Marca/Salvar" method="post" enctype="multipart/form-data">
 
+    <input type="hidden" asp-for="Tipo" value="@Convert.ToInt32(Model.Tipo)" />
+
     @if (ViewBag.Operacao == "A")
     {
 
@@ -45,5 +47,7 @@
 
         <a href="/Home/Index" class="btn btn-secondary">Home</a>
     }
+
+    <span class="text-danger">@ViewBag.Erro</span>
 
 </form>

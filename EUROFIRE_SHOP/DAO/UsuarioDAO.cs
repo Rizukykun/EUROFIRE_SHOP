@@ -20,7 +20,7 @@ namespace EUROFIRE_SHOP.DAO
             parametros[1] = new SqlParameter("Nome", model.Nome);
             parametros[2] = new SqlParameter("Email", model.Email);
             parametros[3] = new SqlParameter("Senha", model.Senha);
-            parametros[4] = new SqlParameter("Tipo", model.Tipo);
+            parametros[4] = new SqlParameter("tipoUsuario", model.Tipo);
             parametros[5] = new SqlParameter("Cpf", model.Cpf);
             parametros[6] = new SqlParameter("Sexo", model.Sexo);
             parametros[7] = new SqlParameter("DataDeNascimento", model.DataDeNascimento);
@@ -40,8 +40,8 @@ namespace EUROFIRE_SHOP.DAO
             f.Nome = registro["Nome"].ToString();
             f.Email = registro["Email"].ToString();
             f.Senha = registro["Senha"].ToString().Trim();
-            if (registro.Table.Columns.Contains("tipo"))
-                f.Tipo = (EnumTipoUsuario)registro["tipo"];
+            if (registro.Table.Columns.Contains("tipoUsuario"))
+                f.Tipo = (EnumTipoUsuario)registro["tipoUsuario"];
             f.Cpf = registro["Cpf"].ToString();
             if (registro.Table.Columns.Contains("Sexo"))
                 f.Sexo = (EnumSexo)registro["Sexo"];

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using EUROFIRE_SHOP.Models;
 using Microsoft.AspNetCore.Mvc.Filters;
+using EUROFIRE_SHOP.Enuns;
+using Microsoft.AspNetCore.Http;
 
 namespace EUROFIRE_SHOP.Controllers
 {
@@ -47,6 +49,8 @@ namespace EUROFIRE_SHOP.Controllers
             if (HelperController.VerificaUserLogado(HttpContext.Session))
             {
                 ViewBag.Logado = true;
+                ViewBag.TipoUsuario = (EnumTipoUsuario)Convert.ToInt32(HttpContext.Session.GetString("TipoUsuario"));
+                base.OnActionExecuting(context);
             }
             else
             {

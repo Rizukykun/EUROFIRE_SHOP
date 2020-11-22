@@ -38,9 +38,9 @@
 
                     @if (ViewBag.Logado == true)
                     {
-                        @if (ViewBag.TipoUsuario == (int)EnumTipoUsuario.Administador)
+                        @if (ViewBag.TipoUsuario == EnumTipoUsuario.Administador)
                         {
-                            <li><a asp-area="" asp-controller="Login" asp-action="Index" style="color: black; font-size: 15px">Cadastro de User</a></li><!--Colocar o "a" no botão-->
+                            <li><a asp-area="" asp-controller="Usuario" asp-action="Criar" style="color: black; font-size: 15px">Cadastro de User</a></li><!--Colocar o "a" no botão-->
                             <li><a asp-area="" asp-controller="Produto" asp-action="Criar" style="color: black; font-size: 15px">Produtos</a></li>
                             <li><a asp-area="" asp-controller="Produto" asp-action="Index" style="color: black; font-size: 15px">Listar Produtos</a></li>
                             <li><a asp-area="" asp-controller="Categoria" asp-action="Criar" style="color: black; font-size: 15px">Categorias</a></li>

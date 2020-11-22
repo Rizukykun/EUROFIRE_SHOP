@@ -20,12 +20,7 @@ namespace EUROFIRE_SHOP.Controllers
         }
 
         protected override void Validacao(UsuarioViewModel model, string operacao)
-        {
-            if (operacao == "I")
-            {
-                model.DataDeNascimento = DateTime.Now;
-            }
-
+        {      
             var dao = new UsuarioDAO();
 
             if (string.IsNullOrEmpty(model.Nome))
@@ -90,7 +85,11 @@ namespace EUROFIRE_SHOP.Controllers
         protected override void PreencheDadosParaView(string Operacao, UsuarioViewModel model)
         {
             if (Operacao == "I")
+            {
                 model.Tipo = (EnumTipoUsuario)ViewBag.TipoUsuario;
+                model.DataDeNascimento = DateTime.Now;
+            }
+
             base.PreencheDadosParaView(Operacao, model);
         }
 
