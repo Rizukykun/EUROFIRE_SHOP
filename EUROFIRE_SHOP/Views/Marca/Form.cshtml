@@ -11,7 +11,7 @@
 
 <form action="/Marca/Salvar" method="post" enctype="multipart/form-data">
 
-    <input type="hidden" asp-for="Tipo" value="@Convert.ToInt32(Model.Tipo)" />
+    <input type="hidden" value="@Convert.ToInt32(ViewBag.TipoUsuario)" />
 
     @if (ViewBag.Operacao == "A")
     {

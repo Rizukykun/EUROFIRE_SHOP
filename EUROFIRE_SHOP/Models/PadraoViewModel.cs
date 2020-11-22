@@ -10,6 +10,5 @@ namespace EUROFIRE_SHOP.Models
     {
         public int Id { get; set; }
         public int IdUsuarioLogado { get; set; }
-        public EnumTipoUsuario Tipo { get; set; }
     }
 }
