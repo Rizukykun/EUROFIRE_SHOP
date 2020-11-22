@@ -12,7 +12,7 @@ namespace EUROFIRE_SHOP.Models
         public string Descricao { get; set; }
         public int IdCategoria { get; set; }
         public int Estoque { get; set; }
-        public decimal Preco { get; set; }
+        public double Preco { get; set; }
         public IFormFile Imagem1 { get; set; }
         public IFormFile Imagem2 { get; set; }
 

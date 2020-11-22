@@ -20,13 +20,15 @@ namespace EUROFIRE_SHOP.DAO
             if (imgByte2 == null)
                 imgByte2 = new byte[0];
 
+            var preco1 = Convert.ToDouble(model.Preco);
+
             SqlParameter[] parametros = new SqlParameter[11];
             parametros[0] = new SqlParameter("Id", model.Id);
             parametros[1] = new SqlParameter("Nome", model.Nome);
             parametros[2] = new SqlParameter("Descricao", model.Descricao);
             parametros[3] = new SqlParameter("IdCategoria", model.IdCategoria);
             parametros[4] = new SqlParameter("Estoque", model.Estoque);
-            parametros[5] = new SqlParameter("Preco", model.Preco);
+            parametros[5] = new SqlParameter("Preco", preco1);
             parametros[6] = new SqlParameter("imagem1", imgByte1);
             parametros[7] = new SqlParameter("imagem2", imgByte2);
             parametros[8] = new SqlParameter("IdFornecedor", model.IdFornecedor);
@@ -44,7 +46,7 @@ namespace EUROFIRE_SHOP.DAO
             n.Descricao = registro["Descricao"].ToString();
             n.IdCategoria = Convert.ToInt32(registro["idCategoria"]);
             n.Estoque = Convert.ToInt32(registro["Estoque"]);
-            n.Preco = Convert.ToDecimal(registro["Preco"]);
+            n.Preco = Convert.ToDouble(registro["Preco"]);
             if (registro.Table.Columns.Contains("imagem1"))
                 if (registro["imagem1"] != DBNull.Value)
                     n.ImagemEmByte1 = registro["imagem1"] as byte[];
@@ -52,6 +54,7 @@ namespace EUROFIRE_SHOP.DAO
                 if (registro["imagem2"] != DBNull.Value)
                     n.ImagemEmByte2 = registro["imagem2"] as byte[];
             n.IdFornecedor = Convert.ToInt32(registro["idFornecedor"]);
+            n.IdMarca = Convert.ToInt32(registro["IdMarca"]);
             return n;
         }
 
