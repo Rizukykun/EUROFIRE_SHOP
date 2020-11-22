@@ -132,6 +132,7 @@ namespace EUROFIRE_SHOP.Controllers
                 else
                 {
                     ViewBag.Logado = true;
+                    ViewBag.TipoUsuario = (EnumTipoUsuario)Convert.ToInt32(HttpContext.Session.GetString("TipoUsuario"));
                     base.OnActionExecuting(context);
                 }
             }
