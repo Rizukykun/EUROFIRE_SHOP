@@ -8,6 +8,7 @@ using EUROFIRE_SHOP.Models;
 using Microsoft.AspNetCore.Mvc.Filters;
 using EUROFIRE_SHOP.Enuns;
 using Microsoft.AspNetCore.Http;
+using EUROFIRE_SHOP.DAO;
 
 namespace EUROFIRE_SHOP.Controllers
 {
@@ -15,7 +16,10 @@ namespace EUROFIRE_SHOP.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            ProdutoDAO dao = new ProdutoDAO();
+            var lista = dao.Listar();
+            
+            return View(lista);
         }
 
         public IActionResult About()

@@ -23,17 +23,23 @@
             <div class="row" style="border-color">
 
                 <figure>
-                    <div class="col-md-4">
-                        <div class="col-md-1">
+                    <div class="col-md-8">
+                        <div class="col-md-4">
                             <img id="imagePreview" src="data:image/UploadIcon;base64,@prod.ImagemEm64_1" class="image-responsive" width="200" />
                         </div>
-                        <div class="col-md-1">
+                        <div class="col-md-4">
                             <img id="imagePreview" src="data:image/UploadIcon;base64,@prod.ImagemEm64_2" class="image-responsive" width="200" />
                         </div>
                         <figcaption>Preço: @prod.Preco <br /> Estoque: @prod.Estoque</figcaption>
 
                     </div>
                 </figure>
+
+                <div class="col-md-4">
+                    <a href="/Produto/Alterar/@prod.Id" class="btn btn-group btn-warning">Alterar</a> &nbsp;&nbsp;
+                    <a href="javascript:confirmaExclusao(@prod.Id, 'Produto')" class="btn btn-group btn-danger">Apagar</a>
+
+                </div>
             </div>
         }
 

@@ -55,6 +55,7 @@ namespace EUROFIRE_SHOP.DAO
                     n.ImagemEmByte2 = registro["imagem2"] as byte[];
             n.IdFornecedor = Convert.ToInt32(registro["idFornecedor"]);
             n.IdMarca = Convert.ToInt32(registro["IdMarca"]);
+
             return n;
         }
 
