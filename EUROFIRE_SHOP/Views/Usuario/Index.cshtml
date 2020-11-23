@@ -1,5 +1,4 @@
-﻿
-@model List<UsuarioViewModel>
+﻿@model List<UsuarioViewModel>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -27,20 +26,14 @@
             <td>@usuario.Nome</td>
             <td>@usuario.Email</td>
             <td>
-                <!--<label class="switch">
 
-                                @if (usuario.Tipo == EnumTipoUsuario.Administador)//testar essa parte (só colocada, não alterada)
-                    {
-                        <input type="checkbox" id="chk_@usuario.Id" checked onclick="AlteraTipoUsuario(this,@usuario.Id)  " />
-                    }
-                    else
-                    {
-                        <input type="checkbox" id="chk_@usuario.Id" onclick="AlteraTipoUsuario(this,@usuario.Id)  " />
-                    }
-                    <span class="slider round"></span>
-                </label>-->
-        </td>
-    </tr>
+
+                <a href="/Usuario/Alterar/@usuario.Id" class="btn btn-group btn-warning">Alterar</a> &nbsp;&nbsp;
+                <a href="javascript:confirmaExclusao(@usuario.Id, 'Usuario')" class="btn btn-group btn-danger">Apagar</a>
+
+
+            </td>
+        </tr>
     }
 
 </table>

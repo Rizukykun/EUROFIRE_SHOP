@@ -16,24 +16,22 @@
 
 
 <table class="table table-responsive table-striped">
+
+    <tr>
+        <th>Marca</th>
+        <th>Ações</th>
+    </tr>
+
     @foreach (var marca in Model)
     {
+        <tr>
+            <td>@marca.Nome</td>
+            <td>
+                <a href="/Marca/Alterar/@marca.Id" class="btn btn-group btn-warning">Alterar</a> &nbsp;&nbsp;
+                <a href="javascript:confirmaExclusao(@marca.Id, 'Marca')" class="btn btn-group btn-danger">Apagar</a>
 
 
-        <div class="col-md-8">
-
-            <div class="row">
-                <h3>Categoria: @marca.Nome</h3> <br />
-            </div>
-
-            <div class="col-md-4">
-
-                <a href="/Produto/Alterar/@marca.Id" class="btn btn-group btn-warning">Alterar</a> &nbsp;&nbsp;
-                <a href="javascript:confirmaExclusao(@marca.Id)" class="btn btn-group btn-danger">Apagar</a>
-
-            </div>
-        </div>
-
+            </td>
+        </tr>
     }
-
 </table>

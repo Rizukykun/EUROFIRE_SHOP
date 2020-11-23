@@ -131,7 +131,7 @@ namespace EUROFIRE_SHOP.Controllers
                     context.Result = RedirectToAction("Index", "Login");
                 else
                 {
-                    ViewBag.Logado = true;
+                    ViewBag.Logado = true;                    
                     ViewBag.TipoUsuario = (EnumTipoUsuario)Convert.ToInt32(HttpContext.Session.GetString("TipoUsuario"));
                     base.OnActionExecuting(context);
                 }

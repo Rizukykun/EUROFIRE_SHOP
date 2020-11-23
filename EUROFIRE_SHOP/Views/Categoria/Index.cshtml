@@ -10,29 +10,27 @@
 <h1>Listagem de Categorias</h1>
 
 <br />
-<a href="/categoria/criar">Novo Registro</a>
+<a href="/categoria/criar" class="btn btn-default">Novo Registro</a>
 <br />
 <br />
 
 
 <table class="table table-responsive table-striped">
+
+    <tr>
+        <th>Categoria</th>
+        <th>Ações</th>
+    </tr>
+
     @foreach (var cat in Model)
     {
-
-
-        <div class="col-md-8">
-
-            <div class="row">
-                <h3>Categoria: @cat.Nome</h3> <br />
-            </div>
-
-            <div class="col-md-4">
-
-                <a href="/Produto/Alterar/@cat.Id" class="btn btn-group btn-warning">Alterar</a> &nbsp;&nbsp;
-                <a href="javascript:confirmaExclusao(@cat.Id)" class="btn btn-group btn-danger">Apagar</a>
-
-            </div>
-        </div>
+        <tr>
+            <td>@cat.Nome</td>
+            <td>
+                <a href="/Categoria/Alterar/@cat.Id" class="btn btn-group btn-warning">Alterar</a> &nbsp;&nbsp;
+                <a href="javascript:confirmaExclusao(@cat.Id, 'Categoria')" class="btn btn-group btn-danger">Apagar</a>
+            </td>
+        </tr>
 
     }
 

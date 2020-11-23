@@ -5,21 +5,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Cadastro de Produto</h1>
+<h1>Cadastro de Categoria</h1>
 
 
 
 <form action="/Categoria/Salvar" method="post" enctype="multipart/form-data">
-
-    <input type="hidden"  value="@Convert.ToInt32(ViewBag.TipoUsuario)" />
+    <input type="hidden" name="Operacao" value="@ViewBag.Operacao" />
+    <input type="hidden" value="@Convert.ToInt32(ViewBag.TipoUsuario)" />
 
     @if (ViewBag.Operacao == "A")
     {
-
-        <label for="Id" class="control-label">Produto Id</label>
+        <label for="Id" class="control-label">Categoria Id</label>
         <input asp-for="Id" value="@Model.Id" readonly class="form-control disabled" />
         <span asp-validation-for="Id" class="text-danger"></span>
-
     }
 
 

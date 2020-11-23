@@ -10,46 +10,35 @@
 
 <h1>Listagem de Produtos</h1>
 
-<br />
-<a href="/produto/criar">Novo Registro</a>
-<br />
-<br />
 
 @if (ViewBag.TipoUsuario == EnumTipoUsuario.Administador) //testeeeeeeeeee
 {
-<table class="table table-responsive table-striped">
-    @foreach (var prod in Model)
-    {
-        <div class="row">
-            <h3>Produto: @prod.Nome</h3> <br />
-        </div>
+    <table class="table table-responsive table-striped">
+        @foreach (var prod in Model)
+        {
+            <div class="row">
+                <h3>Produto: @prod.Nome</h3> <br />
+            </div>
 
-        <div class="row">
+            <div class="row" style="border-color">
 
-            <div class="col-md-5">
                 <figure>
-                    <img id="imagePreview" src="data:image/UploadIcon;base64,@prod.ImagemEm64_1" class="image-responsive" width="200" />
-                    <figcaption>Preço: @prod.Preco <br /> Estoque: @prod.Estoque</figcaption>
+                    <div class="col-md-4">
+                        <div class="col-md-1">
+                            <img id="imagePreview" src="data:image/UploadIcon;base64,@prod.ImagemEm64_1" class="image-responsive" width="200" />
+                        </div>
+                        <div class="col-md-1">
+                            <img id="imagePreview" src="data:image/UploadIcon;base64,@prod.ImagemEm64_2" class="image-responsive" width="200" />
+                        </div>
+                        <figcaption>Preço: @prod.Preco <br /> Estoque: @prod.Estoque</figcaption>
+
+                    </div>
                 </figure>
             </div>
-            <div class="col-md-5">
-                <figure>
-                    <img id="imagePreview" src="data:image/UploadIcon;base64,@prod.ImagemEm64_2" class="image-responsive" width="200" />
-                    <figcaption>Preço: @prod.Preco <br /> Estoque: @prod.Estoque</figcaption>
-                </figure>
-            </div>
+        }
 
-            <div class="col-md-2">
+        <span class="text-danger"> @ViewBag.Erro</span>
 
-                <a href="/Produto/Alterar/@prod.Id" class="btn btn-group btn-warning">Alterar</a> &nbsp;&nbsp;
-                <a href="javascript:confirmaExclusao(@prod.Id)" class="btn btn-group btn-danger">Apagar</a>
-
-            </div>
-        </div>
-    }
-
-    <span class="text-danger"> @ViewBag.Erro</span>
-
-</table>
+    </table>
 
 }

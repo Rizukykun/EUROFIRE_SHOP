@@ -10,7 +10,7 @@
 
 
 <form action="/Marca/Salvar" method="post" enctype="multipart/form-data">
-
+    <input type="hidden" name="Operacao" value="@ViewBag.Operacao" />
     <input type="hidden" value="@Convert.ToInt32(ViewBag.TipoUsuario)" />
 
     @if (ViewBag.Operacao == "A")

@@ -12,7 +12,7 @@ namespace EUROFIRE_SHOP.DAO
     {
         protected PadraoDAO()
         {
-            SetTabela();
+            SetTabela();            
         }
 
         protected bool ChaveIdentity { get; set; } = false;

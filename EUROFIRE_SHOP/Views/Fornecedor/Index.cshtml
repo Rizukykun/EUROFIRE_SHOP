@@ -16,24 +16,20 @@
 
 
 <table class="table table-responsive table-striped">
+
+    <tr>
+        <th>Fornecedor</th>
+        <th>Ações</th>
+    </tr>
+
     @foreach (var fornecedor in Model)
     {
-
-
-        <div class="col-md-8">
-
-            <div class="row">
-                <h3>Categoria: @fornecedor.Nome</h3> <br />
-            </div>
-
-            <div class="col-md-4">
-
-                <a href="/Produto/Alterar/@fornecedor.Id" class="btn btn-group btn-warning">Alterar</a> &nbsp;&nbsp;
-                <a href="javascript:confirmaExclusao(@fornecedor.Id)" class="btn btn-group btn-danger">Apagar</a>
-
-            </div>
-        </div>
-
+        <tr>
+            <td>@fornecedor.Nome</td>
+            <td>
+                <a href="/Fornecedor/Alterar/@fornecedor.Id" class="btn btn-group btn-warning">Alterar</a> &nbsp;&nbsp;
+                <a href="javascript:confirmaExclusao(@fornecedor.Id, 'Fornecedor')" class="btn btn-group btn-danger">Apagar</a>
+            </td>
+        </tr>
     }
-
 </table>

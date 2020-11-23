@@ -7,9 +7,9 @@ function exibirImagem(fileImg, previewImg) {
     };
 }
 
-function confirmaExclusao(id) {
+function confirmaExclusao(id, tabela) {
     if (confirm('Deseja mesmo apagar este registro?'))
-        location.href = '/produto/Excluir?id=' + id;
+        location.href = '/' + tabela + '/Excluir?id=' + id;
 }
 
 function buscaCEP() {
