@@ -31,12 +31,13 @@ namespace EUROFIRE_SHOP.DAO
             HelperDAO.ExecutaProc("spUpdate_" + Tabela, CriaParametros(model));
         }
 
-        public virtual void Excluir(int id)
+        public virtual void Excluir(int id, int idusuariologado)
         {
             var p = new SqlParameter[]
             {
                 new SqlParameter($"Id", id),
-                new SqlParameter("tabela", Tabela)
+                new SqlParameter("tabela", Tabela),
+                new SqlParameter("usuario", idusuariologado)
             };
             HelperDAO.ExecutaProc("spDelete", p);
         }
@@ -65,8 +66,14 @@ namespace EUROFIRE_SHOP.DAO
 
             var tabela = HelperDAO.ExecutaProcSelect("spListagem", p);
             List<T> lista = new List<T>();
+            bool skip = true; //Necessário para evadir a listagem do elemento zero (trash)
             foreach (DataRow registro in tabela.Rows)
             {
+                if (skip)
+                {
+                    skip = false;
+                    continue;
+                }
                 lista.Add(MontaModel(registro));
             }
             return lista;

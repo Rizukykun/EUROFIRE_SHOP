@@ -70,7 +70,8 @@ namespace EUROFIRE_SHOP.Controllers
         {
             try
             {
-                DAO.Excluir(id);
+                ViewBag.IdUsuarioLogado = Convert.ToInt32(HttpContext.Session.GetString("IdUsuario"));
+                DAO.Excluir(id, ViewBag.IdUsuarioLogado);
                 return RedirectToAction(NomePaginaRetorno, NomeControllerRetorno);
             }
             catch
