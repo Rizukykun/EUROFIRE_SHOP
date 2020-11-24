@@ -17,7 +17,7 @@ namespace EUROFIRE_SHOP.Controllers
         {
             ProdutoDAO dao = new ProdutoDAO();
             var listaDeProdutos = dao.Listar();
-
+            ViewBag.CarrinhoNaSession = ObtemCarrinhoNaSession();
             var carrinho = ObtemCarrinhoNaSession();
             @ViewBag.TotalCarrinho = carrinho.Sum(c => c.Quantidade);
 
@@ -32,6 +32,8 @@ namespace EUROFIRE_SHOP.Controllers
                 carrinho = JsonConvert.DeserializeObject<List<CarrinhoViewModel>>(carrinhoJson);
             return carrinho;
         }
+
+        
 
         public IActionResult AdicionarCarrinho(int id, int Quantidade)
         {

@@ -47,10 +47,12 @@ namespace EUROFIRE_SHOP.Controllers
                 ModelState.AddModelError("IdFornecedor", "Fornecedor inexistente!");
             if (model.IdMarca <= 0)
                 ModelState.AddModelError("IdMarca", "Marca inexistente!");
+            if (model.IdFornecedor <= 0)
+                ModelState.AddModelError("IdFornecedor", "Fornecedor inexistente!");
+            if (model.IdMarca <= 0)
+                ModelState.AddModelError("IdMarca", "Marca inexistente!");
 
             ModelState.Remove("Descricao");
-
-            //VALIDAR CETEGORIA, FORNECEDOR E MARCA
 
             //Quando algo pode aceitar nulo:
             // ModelState.Remove("DataCriacao");

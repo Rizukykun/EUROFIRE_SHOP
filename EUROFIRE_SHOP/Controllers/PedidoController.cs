@@ -13,15 +13,7 @@ namespace EUROFIRE_SHOP.Controllers
     {
         public IActionResult EfetuarPedido()
         {//VERIFICAR TODA ESSA JOÇA
-            private List<CarrinhoViewModel> ObtemCarrinhoNaSession()
-            {
-                List<CarrinhoViewModel> carrinho = new List<CarrinhoViewModel>();
-                string carrinhoJson = HttpContext.Session.GetString("carrinho");
-                if (carrinhoJson != null)
-                    carrinho = JsonConvert.DeserializeObject<List<CarrinhoViewModel>>(carrinhoJson);
-                return carrinho;
-            }
-
+            
             using (var transacao = new System.Transactions.TransactionScope())
             {
 
@@ -30,7 +22,7 @@ namespace EUROFIRE_SHOP.Controllers
                 PedidoDAO pedidoDAO = new PedidoDAO();
                 int idPedido = pedidoDAO.Inserir(pedido);
                 PedidoItemDAO itemDAO = new PedidoItemDAO();
-                var carrinho = ObtemCarrinhoNaSession();
+                var carrinho = ViewBag.CarrinhoNaSession;
                 foreach (var elemento in carrinho)
                 {
                     PedidoItemViewModel item = new PedidoItemViewModel();

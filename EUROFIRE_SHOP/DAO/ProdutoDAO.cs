@@ -18,9 +18,7 @@ namespace EUROFIRE_SHOP.DAO
 
             object imgByte2 = model.ImagemEmByte2;
             if (imgByte2 == null)
-                imgByte2 = new byte[0];
-
-            var preco1 = Convert.ToDouble(model.Preco);
+                imgByte2 = new byte[0];           
 
             SqlParameter[] parametros = new SqlParameter[11];
             parametros[0] = new SqlParameter("Id", model.Id);
@@ -28,7 +26,7 @@ namespace EUROFIRE_SHOP.DAO
             parametros[2] = new SqlParameter("Descricao", model.Descricao);
             parametros[3] = new SqlParameter("IdCategoria", model.IdCategoria);
             parametros[4] = new SqlParameter("Estoque", model.Estoque);
-            parametros[5] = new SqlParameter("Preco", preco1);
+            parametros[5] = new SqlParameter("Preco", model.Preco);
             parametros[6] = new SqlParameter("imagem1", imgByte1);
             parametros[7] = new SqlParameter("imagem2", imgByte2);
             parametros[8] = new SqlParameter("IdFornecedor", model.IdFornecedor);
