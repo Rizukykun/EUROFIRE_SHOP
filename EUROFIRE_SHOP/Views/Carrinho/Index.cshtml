@@ -12,17 +12,16 @@
 <br />
 <br />
 
-<div class="quadradoImagem">
-    @foreach (var produtos in Model)
-    {
 
-        <a href="/Carrinho/Detalhes/?idCidade=@produtos.Id">
-            <figure class="quadradoImagem">
-                <img class="quadradoImagem" src="data:image/jpeg;base64,@produtos.ImagemEm64_1">
-                <figcaption>
-                    @produtos.Nome<br>
-                </figcaption>
-            </figure>
-        </a>
-    }
-</div>
+@foreach (var produtos in Model)
+{
+
+    <a href="/Carrinho/Detalhes/?idProduto=@produtos.Id">
+        <figure class="quadradoImagem">
+            <img class="quadradoImagem" src="data:image/jpeg;base64,@produtos.ImagemEm64_1" width="200">
+            <figcaption>
+                @produtos.Nome<br>
+            </figcaption>
+        </figure>
+    </a>
+}

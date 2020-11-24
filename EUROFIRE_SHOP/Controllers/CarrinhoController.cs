@@ -33,10 +33,10 @@ namespace EUROFIRE_SHOP.Controllers
             return carrinho;
         }
 
-        public IActionResult AdicionarCarrinho(int ProdutosId, int Quantidade)
+        public IActionResult AdicionarCarrinho(int id, int Quantidade)
         {
             List<CarrinhoViewModel> carrinho = ObtemCarrinhoNaSession();
-            CarrinhoViewModel carrinhoModel = carrinho.Find(c => c.Id == ProdutosId);
+            CarrinhoViewModel carrinhoModel = carrinho.Find(c => c.Id == id);
             if (carrinhoModel != null && Quantidade == 0)
             {
                 //tira do carrinho
@@ -46,9 +46,9 @@ namespace EUROFIRE_SHOP.Controllers
             {
                 //não havia no carrinho, vamos adicionar
                 ProdutoDAO prodDao = new ProdutoDAO();
-                var modelCidade = prodDao.Consulta(ProdutosId);
+                var modelCidade = prodDao.Consulta(id);
                 carrinhoModel = new CarrinhoViewModel();
-                carrinhoModel.Id = ProdutosId;
+                carrinhoModel.Id = id;
                 carrinhoModel.Nome = modelCidade.Nome;
                 carrinho.Add(carrinhoModel);
             }
@@ -71,17 +71,6 @@ namespace EUROFIRE_SHOP.Controllers
             return View(carrinho);
         }
 
-        public override void OnActionExecuting(ActionExecutingContext context)
-        {
-            if (!HelperController.VerificaUserLogado(HttpContext.Session))
-                context.Result = RedirectToAction("Index", "Login");
-            else
-            {
-                ViewBag.Logado = true;
-                base.OnActionExecuting(context);
-            }
-        }
-
         public IActionResult Detalhes(int idProduto)
         {
             List<CarrinhoViewModel> carrinho = ObtemCarrinhoNaSession();
@@ -94,7 +83,6 @@ namespace EUROFIRE_SHOP.Controllers
                 carrinhoModel.Id = idProduto;
                 carrinhoModel.Nome = modelProdutos.Nome;
                 carrinhoModel.Preco = Convert.ToDouble(modelProdutos.Preco);
-                //carrinhoModel.ValorTotalDoPedido = FAZER MÉTODO DE VALOR TOTAL
                 carrinhoModel.Descricao = modelProdutos.Descricao;
                 carrinhoModel.Quantidade = 0;
             }
@@ -109,32 +97,7 @@ namespace EUROFIRE_SHOP.Controllers
             carrinhoModel.ImagemEmBase64 = modelProdutos.ImagemEm64_1;
             return View(carrinhoModel);
         }
-
-        //método de valor total de cada produto e total de pedido
-
-
-        public IActionResult EfetuarPedido()
-        {
-            using (var transacao = new System.Transactions.TransactionScope())
-            {
-                PedidoViewModel pedido = new PedidoViewModel();
-                pedido.Data = DateTime.Now;
-                PedidoDAO pedidoDAO = new PedidoDAO();
-                int idPedido = pedidoDAO.Inserir(pedido);
-                PedidoItemDAO itemDAO = new PedidoItemDAO();
-                var carrinho = ObtemCarrinhoNaSession();
-                foreach (var elemento in carrinho)
-                {
-                    PedidoItemViewModel item = new PedidoItemViewModel();
-                    item.PedidoId = idPedido;
-                    item.CidadeId = elemento.Id;
-                    item.Quantidade = elemento.Quantidade;
-                    itemDAO.Inserir(item);
-                }
-                transacao.Complete();
-            }
-            return RedirectToAction("Index", "Home");
-        }
+                      
 
     }
 
