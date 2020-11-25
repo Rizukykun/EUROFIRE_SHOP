@@ -8,8 +8,9 @@
     <form id="form-buscar" asp-action="buscar" method="get">
         <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
         <input id="auto-complete" type="text" name="filtroBusca" placeholder="Buscar..." value="@ViewBag.FiltroBusca" autocomplete="off" class="ui-autocomplete-input">
-        <button type="submit" class="btn btn-default">Filtrar</button>
+        <button type="submit" class="btn btn-default" onclick="Filtro">Filtrar</button>
     </form>
+    <select asp-for="@model.Filtro" asp-items="Html.GetEnumSelectList<EnumFiltroProduto>()" id="Filtro" class="form-control"></select>
 </center>
 
 

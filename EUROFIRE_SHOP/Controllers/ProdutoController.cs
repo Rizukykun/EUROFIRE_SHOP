@@ -1,6 +1,7 @@
 ﻿using EUROFIRE_SHOP.DAO;
 using EUROFIRE_SHOP.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
@@ -121,7 +122,7 @@ namespace EUROFIRE_SHOP.Controllers
                 listaMarcas.Add(item);
             }
             ViewBag.Marca = listaMarcas;
-        }        
+        }    
     }
 }
 

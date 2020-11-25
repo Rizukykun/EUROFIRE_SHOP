@@ -1,4 +1,5 @@
-﻿using EUROFIRE_SHOP.Models;
+﻿using EUROFIRE_SHOP.Enuns;
+using EUROFIRE_SHOP.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -77,5 +78,23 @@ namespace EUROFIRE_SHOP.DAO
             }
             return lista;
         }*/
+
+        public List<ProdutoViewModel> ListarBusca(string pesquisa, int ordem)
+        {
+            var p = new SqlParameter[]
+            {
+                new SqlParameter("pesquisa", pesquisa),
+                new SqlParameter("ordem", ordem)
+            };
+            var tabela = HelperDAO.ExecutaProcSelect("PesquisaProdutos", p);
+            List<ProdutoViewModel> lista = new List<ProdutoViewModel>();
+            foreach (DataRow registro in tabela.Rows)
+            {
+                if (lista.Count == 1 && lista[0].Id == 0)
+                    lista.Clear();
+                lista.Add(MontaModel(registro));
+            }
+            return lista;
+        }
     }
 }

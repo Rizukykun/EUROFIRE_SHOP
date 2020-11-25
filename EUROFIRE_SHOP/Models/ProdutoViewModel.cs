@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using EUROFIRE_SHOP.Enuns;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,5 +44,6 @@ namespace EUROFIRE_SHOP.Models
 
         public int IdFornecedor { get; set; }
         public int IdMarca { get; set; }
+        public EnumFiltroProduto Filtro { get; set; }
     }
 }
