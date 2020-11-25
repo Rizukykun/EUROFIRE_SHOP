@@ -41,3 +41,9 @@ body {
 .quadradoImagem {
     border: solid
 }
+
+
+.borda-alpha, .borda-alpha * {
+    border-color: rgba(0,0,0,0.13);
+}
+

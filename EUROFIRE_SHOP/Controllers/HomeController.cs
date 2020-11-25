@@ -62,5 +62,16 @@ namespace EUROFIRE_SHOP.Controllers
                 base.OnActionExecuting(context);
             }
         }
+
+
+        public IActionResult Buscar(string filtroBusca)
+        {
+            ProdutoDAO dao = new ProdutoDAO();
+            var lista = dao.Listar();
+            lista = lista.FindAll(p => p.Descricao.Contains(filtroBusca));
+            ViewBag.FiltroBusca = filtroBusca;
+            return View("index", lista);
+        }
+
     }
 }

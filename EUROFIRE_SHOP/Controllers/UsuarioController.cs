@@ -78,7 +78,7 @@ namespace EUROFIRE_SHOP.Controllers
 
         public IActionResult CriarUsuario(int tipoUsuario)
         {
-            ViewBag.TipoUsuario = tipoUsuario;
+            ViewBag.TipoUsuario = (EnumTipoUsuario)tipoUsuario;
             return base.Criar();
         }
 
@@ -86,7 +86,7 @@ namespace EUROFIRE_SHOP.Controllers
         {
             if (Operacao == "I")
             {
-                model.Tipo = (EnumTipoUsuario)ViewBag.TipoUsuario;
+                model.Tipo = ViewBag.TipoUsuario;
                 model.DataDeNascimento = DateTime.Now;
             }
 

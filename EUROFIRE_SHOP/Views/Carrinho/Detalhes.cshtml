@@ -2,7 +2,7 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>Escolha a quantidade</h2>
+<h2><strong> @Model.Nome </strong></h2>
 <br />
 <br />
 <div class="row">
@@ -12,7 +12,7 @@
             <img id="imgPreview" src="data:image/jpeg;base64,@Model.ImagemEmBase64"
                  class="img-responsive" width="200">
             <br />
-            <strong> @Model.Nome - Detalhes : @Model.Descricao</strong>
+            <strong>Detalhes : @Model.Descricao</strong>
             <br />
             <br />
             Quantidade:

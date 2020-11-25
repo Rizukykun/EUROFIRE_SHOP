@@ -17,7 +17,7 @@
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top" style="background-image: linear-gradient(to right, grey, white)">
+    <nav class="navbar navbar-inverse navbar-fixed-top" style="background-image: linear-gradient(to right, white, white)">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -26,48 +26,59 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <!--<a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Cadastro Fotos Viagem</a>-->
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">
+                    <img src="https://cdn.awsli.com.br/400x300/1113/1113643/logo/519b567bcd.png" width="100" height="40" >
+
+                </a>
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">
-                        <img src="~/images/HomeIcon.png" />
 
+                <ul>
+                    <a asp-area="" asp-controller="Home" asp-action="About" style="position:absolute; right: 114px;">
+                        <img src="~/images/AboutPNG.png" width="50" />
                     </a>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About" style="color: black; font-size: 15px">Sobre</a></li>
 
                     @if (ViewBag.Logado == true)
                     {
                         @if (ViewBag.TipoUsuario == EnumTipoUsuario.Administador)
                         {
-                            <li><a asp-area="" asp-controller="Usuario" asp-action="Criar" style="color: black; font-size: 15px">User</a></li>
-                            <li><a asp-area="" asp-controller="Usuario" asp-action="Index" style="color: black; font-size: 15px">List. User</a></li>
+                            <a asp-area="" asp-controller="Usuario" asp-action="Criar" style="color: darkred; font-size: 15px">User | </a>
+                            <a asp-area="" asp-controller="Usuario" asp-action="Index" style="color: black; font-size: 15px">List. User | </a>
 
-                            <li><a asp-area="" asp-controller="Produto" asp-action="Criar" style="color: black; font-size: 15px">Produtos</a></li>
-                            <li><a asp-area="" asp-controller="Produto" asp-action="Index" style="color: black; font-size: 15px">List. Prod.</a></li>
+                            <a asp-area="" asp-controller="Fornecedor" asp-action="Criar" style="color: darkred; font-size: 15px">Fornecedor | </a>
+                            <a asp-area="" asp-controller="Fornecedor" asp-action="Index" style="color: black; font-size: 15px">List. Forn. | </a>
 
-                            <li><a asp-area="" asp-controller="Categoria" asp-action="Criar" style="color: black; font-size: 15px">Categorias</a></li>
-                            <li><a asp-area="" asp-controller="Categoria" asp-action="Index" style="color: black; font-size: 15px">List. Cate.</a></li>
+                            <a asp-area="" asp-controller="Marca" asp-action="Criar" style="color: darkred; font-size: 15px">Marca | </a>
+                            <a asp-area="" asp-controller="Marca" asp-action="Index" style="color: black; font-size: 15px">List. Marca | </a>
 
-                            <li><a asp-area="" asp-controller="Marca" asp-action="Criar" style="color: black; font-size: 15px">Marca</a></li>
-                            <li><a asp-area="" asp-controller="Marca" asp-action="Index" style="color: black; font-size: 15px">List. Marca</a></li>
+                            <a asp-area="" asp-controller="Categoria" asp-action="Criar" style="color: darkred; font-size: 15px">Categorias | </a>
+                            <a asp-area="" asp-controller="Categoria" asp-action="Index" style="color: black; font-size: 15px">List. Cate. | </a>
 
-                            <li><a asp-area="" asp-controller="Fornecedor" asp-action="Criar" style="color: black; font-size: 15px">Fornecedor</a></li>
-                            <li><a asp-area="" asp-controller="Fornecedor" asp-action="Index" style="color: black; font-size: 15px">List. Forn.</a></li>
+                            <a asp-area="" asp-controller="Produto" asp-action="Criar" style="color: darkred; font-size: 15px">Produtos | </a>
+                            <a asp-area="" asp-controller="Produto" asp-action="Index" style="color: black; font-size: 15px">List. Prod. </a>
 
-                            <li><a asp-area="" asp-controller="Carrinho" asp-action="Index" style="color: black; font-size: 15px">Carrinho</a></li>
-                            <li><a asp-area="" asp-controller="Login" asp-action="LogOff" style="color: black; font-size: 15px">Sair</a></li>
+                            <a asp-area="" asp-controller="Carrinho" asp-action="Index" style="position:absolute; right: 214px;">
+                                <img src="~/images/Carrinho.png" width="50" />
+                            </a>
+
+                            <a asp-area="" asp-controller="Login" asp-action="LogOff" style="color: darkred; font-size: 15px">Sair</a>
+                            <br />
                         }
                         else
                         {
-                            <li><a asp-area="" asp-controller="Carrinho" asp-action="Index" style="color: black; font-size: 15px">Carrinho</a></li>
-                            <li><a asp-area="" asp-controller="Login" asp-action="LogOff" style="color: black; font-size: 15px">Sair</a></li>
+                            <a asp-area="" asp-controller="Carrinho" asp-action="Index" style="position:absolute; right: 214px;">
+                                <img src="~/images/Carrinho.png" width="50" />
+                            </a>
+
+                            <a asp-area="" asp-controller="Login" asp-action="LogOff" style="color: darkred; font-size: 15px">Sair</a>
                         }
 
                     }
                     else
                     {
-                        <li><a asp-area="" asp-controller="Login" asp-action="Index" style="color: black; font-size: 15px">Login</a></li>
+                        <a asp-area="" asp-controller="Login" asp-action="Index" style="position:absolute; right: 284px;">
+                            <img src="~/images/User.png" width="50" />
+                        </a>
                     }
 
 
